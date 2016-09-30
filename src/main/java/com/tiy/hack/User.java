@@ -19,7 +19,7 @@ public class User {
     @Column(nullable = false)
     String lastName;
 
-    @Column(nullable = false)
+    @Column
     String techSkills;
 
     @Column(nullable = false, unique = true)
@@ -32,12 +32,16 @@ public class User {
 
     }
 
-    public User(String email, String password) {
+    public User(String email, String firstName, String lastName, String password, String techSkills) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.techSkills = techSkills;
     }
+    public User(String email, String firstName, String lastName, String password) {
 
-    public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
