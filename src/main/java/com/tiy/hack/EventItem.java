@@ -11,7 +11,7 @@ public class EventItem {
     @Id
     @GeneratedValue
     int id;
-    @ManyToMany
+    @ManyToOne
     User user;
     @Column(nullable = false)
     String eventName;
@@ -71,6 +71,7 @@ public class EventItem {
     public void setDescription(String description) {
         this.description = description;
     }
+
 
     public boolean isDone() {
         return isDone;
