@@ -19,10 +19,10 @@ public class User {
     @Column(nullable = false)
     String lastName;
 
-    @Column
+    @Column(nullable = false)
     String techSkills;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false,unique = true)
     String email;
 
     @Column(nullable = false)
