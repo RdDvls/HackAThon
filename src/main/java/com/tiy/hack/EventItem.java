@@ -17,24 +17,29 @@ public class EventItem {
     String eventName;
     @Column(nullable = false)
     String description;
-//    @Column(nullable = false)
-//    String location;
+    @Column(nullable = false)
+    String location;
 //    @Column(nullable = false)
 //    long time;
     @Column(nullable = false)
     boolean isDone;
-//    @Column(nullable = false)
-//    long date;
 
-    public EventItem(int id, User user, String eventName, String description, String location, long time, boolean isDone, long date) {
-        this.id = id;
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
+    }
+
+    public EventItem(User user, String eventName, String description, String location, boolean isDone) {
         this.user = user;
         this.eventName = eventName;
         this.description = description;
+        this.location = location;
+//        this.time = time;
         this.isDone = isDone;
     }
-
-
 
     public int getId() {
 
@@ -72,14 +77,19 @@ public class EventItem {
         this.description = description;
     }
 
-
-    public boolean isDone() {
-        return isDone;
+    public String getLocation() {
+        return location;
     }
 
-    public void setDone(boolean done) {
-        isDone = done;
+    public void setLocation(String location) {
+        this.location = location;
     }
+
+//    public long getTime() {
+//        return time;
+//    }
+//
+//    public void setTime(long time) {
+//        this.time = time;
+//    }
 }
-// users_events_attended table    -- one-to-many relationship with users      --one to many with events table
-// user-contacts

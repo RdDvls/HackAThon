@@ -7,10 +7,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+
 @SpringBootApplication
 public class HackAThonApplication {
 
 	public static void main(String[] args) throws SQLException {
 		SpringApplication.run(HackAThonApplication.class, args);
+		Server.createWebServer().start();
+	}
+	public void createUser()
+	{
+
 	}
 }
