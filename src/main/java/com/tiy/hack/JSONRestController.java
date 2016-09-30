@@ -19,7 +19,7 @@ public class JSONRestController {
     @Autowired
     EventRepository events;
 
-    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    @RequestMapping(path = "/login.json", method = RequestMethod.POST)
     public String login(HttpSession session, String email, String password) throws Exception {
         User myUser = users.findFirstByEmail(email);
         if (myUser == null) {
@@ -37,7 +37,7 @@ public class JSONRestController {
 //
 //    }
 
-    @RequestMapping(path = "/newUser", method = RequestMethod.POST)
+    @RequestMapping(path = "/newUser.json", method = RequestMethod.POST)
     public String register(HttpSession session, String email, String firstName, String lastName, String password) {
         User myUser = users.findFirstByEmail(email);
         if (myUser == null) {
