@@ -17,21 +17,24 @@ public class EventItem {
     String eventName;
     @Column(nullable = false)
     String description;
-    @Column(nullable = false)
-    String location;
-    @Column(nullable = false)
-    long time;
+//    @Column(nullable = false)
+//    String location;
+//    @Column(nullable = false)
+//    long time;
     @Column(nullable = false)
     boolean isDone;
+//    @Column(nullable = false)
+//    long date;
 
-    public EventItem(User user, String eventName, String description, String location, long time, boolean isDone) {
+    public EventItem(int id, User user, String eventName, String description, String location, long time, boolean isDone, long date) {
+        this.id = id;
         this.user = user;
         this.eventName = eventName;
         this.description = description;
-        this.location = location;
-        this.time = time;
         this.isDone = isDone;
     }
+
+
 
     public int getId() {
 
@@ -67,22 +70,6 @@ public class EventItem {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public long getTime() {
-        return time;
-    }
-
-    public void setTime(long time) {
-        this.time = time;
     }
 
     public boolean isDone() {
