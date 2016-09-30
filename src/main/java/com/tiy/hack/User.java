@@ -40,6 +40,7 @@ public class User {
         this.password = password;
         this.techSkills = techSkills;
     }
+
     public User(String email, String firstName, String lastName, String password) {
 
         this.firstName = firstName;

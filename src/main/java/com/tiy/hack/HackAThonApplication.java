@@ -13,10 +13,6 @@ public class HackAThonApplication {
 
 	public static void main(String[] args) throws SQLException {
 		SpringApplication.run(HackAThonApplication.class, args);
-		Server.createWebServer().start();
-	}
-	public void createUser()
-	{
-
 	}
 }
+
