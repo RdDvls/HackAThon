@@ -11,7 +11,7 @@ public class EventItem {
     @Id
     @GeneratedValue
     int id;
-    @ManyToOne
+    @ManyToMany
     User user;
     @Column(nullable = false)
     String eventName;
@@ -93,3 +93,5 @@ public class EventItem {
         isDone = done;
     }
 }
+// users_events_attended table    -- one-to-many relationship with users      --one to many with events table
+// user-contacts
