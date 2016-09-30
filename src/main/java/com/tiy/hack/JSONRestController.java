@@ -1,13 +1,11 @@
 package com.tiy.hack;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 
 /**
  * Created by RdDvls on 9/30/16.
@@ -38,7 +36,7 @@ public class JSONRestController {
 //    }
 
     @RequestMapping(path = "/newUser.json", method = RequestMethod.POST)
-    public String register(HttpSession session, String email, String firstName, String lastName, String password) {
+    public User register(HttpSession session, String email, String firstName, String lastName, String password) {
         User myUser = users.findFirstByEmail(email);
         if (myUser == null) {
             myUser = new User(email, firstName, lastName, password);
@@ -46,7 +44,7 @@ public class JSONRestController {
         }
         session.setAttribute("user", myUser);
 //        return "redirect:/home";
-        return "user";
+        return myUser;
     }
 }
 

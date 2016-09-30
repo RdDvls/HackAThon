@@ -5,9 +5,11 @@
    {{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
    {{=<% %>=}}
 --->
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="../static.js/tiy-ng-controller.js"></script>
-<script src="tiy-ng-controller.js"></script>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../static.js/tiy-ng-controller.js"></script>
+    <script src="/static.js/tiy-ng-controller.js"></script>
+</head>
 /Users/RdDvls/Documents/sandbox/HackAThon/src/main/resources/static.js/tiy-ng-controller.js
 <div>
     <br><br>
@@ -21,7 +23,7 @@
     <input type="text" placeholder="Last name" ng-model="lastName"/>
     <input type="text" placeholder="Email" ng-model="email"/>
     <input type="text" placeholder="Password" ng-model="password"/>
-    <input type="button" value="Register" ng-click="register()"/>
+    <input type="button" value="Register" ng-click="register(firstName,lastName,email,password)"/>
 
 </body>
 </html>
