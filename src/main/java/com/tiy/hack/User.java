@@ -19,8 +19,7 @@ public class User {
     @Column(nullable = false)
     String lastName;
 
-//    @Column
-//    String techSkills;
+
 
     @Column(nullable = false,unique = true)
     String email;
@@ -80,13 +79,7 @@ public class User {
         this.lastName = lastName;
     }
 
-//    public String getTechSkills() {
-//        return techSkills;
-//    }
-/**/
-//    public void setTechSkills(String techSkills) {
-//        this.techSkills = techSkills;
-//    }
+//
 //
     public String getEmail() {
         return email;
