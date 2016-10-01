@@ -75,10 +75,13 @@ public class JSONRestController {
         System.out.println("here");
         if (myUser != null) {
             myUser = new User(myUser.email,myUser.firstName, myUser.lastName ,myUser.password);
+            System.out.println(myUser.firstName);
+            System.out.println(myUser.lastName);
+            System.out.println(myUser.email);
+            System.out.println(myUser.password);
             users.save(myUser);
         }
 //        session.setAttribute("user", myUser);
-        System.out.println(myUser.firstName);
         return myUser;
     }
 
