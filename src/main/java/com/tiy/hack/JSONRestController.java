@@ -61,6 +61,13 @@ public class JSONRestController {
         session.invalidate();
 
     }
+    @RequestMapping(path = "/newUser.json", method = RequestMethod.GET)
+    public User newUserGet()throws Exception{
+        System.out.println("I am a get");
+        User testUser = new User();
+        testUser.setFirstName("Testing gap...");
+        return testUser;
+    }
 
     @RequestMapping(path = "/newUser.json", method = RequestMethod.POST)
 //    public User register(@RequestBody String email, @RequestBody String firstName, @RequestBody String lastName, @RequestBody String password) {
