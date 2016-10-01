@@ -18,6 +18,8 @@ public class JSONRestController {
     UserRepository users;
     @Autowired
     EventRepository events;
+
+
     User myUser;
 
     @RequestMapping(path = "/testjson.json", method = RequestMethod.GET)
@@ -26,27 +28,31 @@ public class JSONRestController {
         return myUser;
     }
 
-    @RequestMapping(path = "/newUser.json", method = RequestMethod.GET)
-//    public User register(HttpSession session,String email, String firstName, String lastName, String password) {
-    public User testRegister(HttpSession session, @RequestBody User myUser) throws Exception {
-        myUser = users.findFirstByEmail(myUser.email);
-        if (myUser == null) {
-            myUser = new User("Joe", "Fabiano", "test@test.com", "abc123!");
-            users.save(myUser);
-        }
-        session.setAttribute("user", myUser);
-        return myUser;
-    }
+//    @RequestMapping(path = "/newUser.json", method = RequestMethod.GET)
+////    public User register(HttpSession session,String email, String firstName, String lastName, String password) {
+//    public User testRegister(HttpSession session, @RequestBody User myUser) throws Exception {
+//        myUser = users.findFirstByEmail(myUser.email);
+//        if (myUser == null) {
+//            myUser = new User("Joe", "Fabiano", "test@test.com", "abc123!");
+//            users.save(myUser);
+//        }
+//        session.setAttribute("user", myUser);
+//        return myUser;
+//    }
 
     @RequestMapping(path = "/login.json", method = RequestMethod.POST)
-    public User login(HttpSession session, String email, String password) throws Exception {
-        User myUser = users.findFirstByEmail(email);
+    public User login(HttpSession session, String email, String password,@RequestBody User myUser) throws Exception {
+        myUser = users.findFirstByEmailAndPassword(myUser.email,myUser.password);
+        System.out.println(myUser.email);
+        System.out.println(myUser.password);
+        myUser.setEmail(myUser.email);
+        myUser.setPassword(myUser.password);
         if (myUser == null) {
             throw new Exception("User does not exist or was input incorrectly");
         } else if (!password.equals(myUser.getPassword())) {
             throw new Exception("Incorrect Password");
         }
-        session.setAttribute("user", myUser);
+//        session.setAttribute("user", myUser);
         return myUser;
     }
 
