@@ -19,7 +19,7 @@ public class User {
     @Column(nullable = false)
     String lastName;
 
-    @Column(nullable = true)
+    @Column
     String techSkills;
 
     @Column(nullable = false,unique = true)
