@@ -71,10 +71,10 @@ public class JSONRestController {
 
     @RequestMapping(path = "/newUser.json", method = RequestMethod.POST)
 
-    public User register(@RequestBody User myUser) throws Exception {
+    public User register( @RequestBody User myUser) throws Exception {
         System.out.println("here");
         if (myUser != null) {
-            myUser = new User(myUser.email,myUser.firstName, myUser.lastName ,myUser.password);
+//            myUser = new User(myUser.email,myUser.firstName, myUser.lastName ,myUser.password);
             System.out.println(myUser.firstName);
             System.out.println(myUser.lastName);
             System.out.println(myUser.email);
