@@ -63,13 +63,14 @@ public class JSONRestController {
     public User register(HttpSession session, @RequestBody User myUser) throws Exception {
         System.out.println("here");
 //        myUser = users.findFirstByEmail(myUser.email);
-        if (myUser == null) {
-            myUser = new User(myUser.firstName, myUser.lastName, myUser.email,myUser.password);
+        if (myUser != null) {
+            myUser = new User(myUser.email,myUser.firstName, myUser.lastName ,myUser.password);
 //            myUser.setFirstName(myUser.firstName);
-//            System.out.println(myUser.getFirstName());
             users.save(myUser);
         }
         session.setAttribute("user", myUser);
+        System.out.println(myUser.firstName);
+
         return myUser;
     }
 
