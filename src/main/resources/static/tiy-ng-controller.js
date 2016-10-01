@@ -1,12 +1,12 @@
 angular.module("HackAThon",[])
     .controller("HackAThonController",  function($scope,$http){
         console.log("Testing...");
-            $scope.newUser = {};
+//            $scope.newUser = {};
 
-             $scope.user;
+            $scope.user;
             $scope.register = function(firstName, lastName, email, password){
                 console.log("About to insert an user");
-                $http.post("/register.json?firstName=" + firstName + "&lastName=" + lastName + "&email=" + email + "&password=" + password)
+                $http.post("/register.json?firstName=" + $scope.firstName + "&lastName=" + $scope.lastName + "&email=" + $scope.email + "&password=" + $scope.password)
                     .then(
                     function success(response){
                         console.log("Adding data to scope..");
