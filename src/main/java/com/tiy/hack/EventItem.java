@@ -13,7 +13,16 @@ public class EventItem {
     int id;
     @ManyToOne
     User user;
+
+    public EventItem(String eventName, String description, String location, boolean isDone) {
+        this.eventName = eventName;
+        this.description = description;
+        this.location = location;
+        this.isDone = isDone;
+    }
+
     @Column(nullable = false)
+
     String eventName;
     @Column(nullable = false)
     String description;
