@@ -22,11 +22,11 @@ public class JSONRestController {
 
     User myUser;
 
-    @RequestMapping(path = "/testjson.json", method = RequestMethod.GET)
-    public User testJson(HttpSession session, String firstName) {
-        User myUser = new User();
-        return myUser;
-    }
+//    @RequestMapping(path = "/testjson.json", method = RequestMethod.GET)
+//    public User testJson(HttpSession session, String firstName) {
+//        User myUser = new User();
+//        return myUser;
+//    }
 
 //    @RequestMapping(path = "/newUser.json", method = RequestMethod.GET)
 ////    public User register(HttpSession session,String email, String firstName, String lastName, String password) {
