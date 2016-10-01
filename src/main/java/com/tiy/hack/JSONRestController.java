@@ -45,8 +45,8 @@ public class JSONRestController {
     }
 
     @RequestMapping(path = "/newUser.json", method = RequestMethod.POST)
-//    public User register(HttpSession session,String email, String firstName, String lastName, String password) {
-    public User register(HttpSession session, @RequestBody User myUser) throws Exception {
+    public User register(HttpSession session,String email, String firstName, String lastName, String password) {
+//    public User register(HttpSession session, @RequestBody User myUser) throws Exception {
         myUser = users.findFirstByEmail(myUser.email);
         if (myUser == null) {
             myUser = new User(myUser.firstName, myUser.lastName, myUser.email, myUser.password);
