@@ -26,6 +26,18 @@ public class JSONRestController {
         return myUser;
     }
 
+    @RequestMapping(path = "/newUser.json", method = RequestMethod.GET)
+//    public User register(HttpSession session,String email, String firstName, String lastName, String password) {
+    public User testRegister(HttpSession session, @RequestBody User myUser) throws Exception {
+        myUser = users.findFirstByEmail(myUser.email);
+        if (myUser == null) {
+            myUser = new User("Joe", "Fabiano", "test@test.com", "abc123!");
+            users.save(myUser);
+        }
+        session.setAttribute("user", myUser);
+        return myUser;
+    }
+
     @RequestMapping(path = "/login.json", method = RequestMethod.POST)
     public User login(HttpSession session, String email, String password) throws Exception {
         User myUser = users.findFirstByEmail(email);
