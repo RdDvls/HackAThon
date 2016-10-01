@@ -19,8 +19,8 @@ public class User {
     @Column(nullable = false)
     String lastName;
 
-    @Column
-    String techSkills;
+//    @Column
+//    String techSkills;
 
     @Column(nullable = false,unique = true)
     String email;
@@ -37,7 +37,7 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.techSkills = techSkills;
+//        this.techSkills = techSkills;
     }
 
     public User(String email, String firstName, String lastName, String password) {
@@ -80,14 +80,14 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getTechSkills() {
-        return techSkills;
-    }
-
-    public void setTechSkills(String techSkills) {
-        this.techSkills = techSkills;
-    }
-
+//    public String getTechSkills() {
+//        return techSkills;
+//    }
+/**/
+//    public void setTechSkills(String techSkills) {
+//        this.techSkills = techSkills;
+//    }
+//
     public String getEmail() {
         return email;
     }

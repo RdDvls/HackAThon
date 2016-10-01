@@ -29,7 +29,7 @@ public class HackAThonApplicationTests {
 		tester.email = "ImaDuck@gmail.com";
 		tester.firstName = "Louis";
 		tester.lastName = "Platyrhynchos";
-		tester.techSkills = "Java MF'in Master";
+//		tester.techSkills = "Java MF'in Master";
 		tester.password = "quack";
 
 		users.save(tester);
