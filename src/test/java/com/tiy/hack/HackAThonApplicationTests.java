@@ -58,7 +58,6 @@ public class HackAThonApplicationTests {
 //	}
 
 
-
 	@Test
 	public void testUserIntoDatabase() {
 		System.out.println("Testing inserting user into db");
@@ -122,11 +121,11 @@ public class HackAThonApplicationTests {
 //
 //		friends.findAllByUserID(testFriend.getId());
 //		System.out.println("Friends for userID " + testFriend.getId() + ": " + friends.findAllByUserID(testFriend.getId()));
-
+//
 //		assertTrue();
-
-
-
+//
+//
+//
 //		Delete User
 //		User retrievedUser = users.findOne(testUser.getId());
 //		users.delete(testUser);
@@ -137,38 +136,37 @@ public class HackAThonApplicationTests {
 //		users.delete(testFriend);
 //		retrievedFriend = users.findOne(testFriend.getId());
 //		assertNull(retrievedFriend);
-	}
 
-//	@Test
-//	public void testRegisterUser() {
-//		System.out.println("Testing inserting user into db");
-//
-//		String testEmail = "test::email";
-//		String testPassword = "test::password";
-//		String testFirstName = "test::firstName";
-//		String testLastName = "test::lastName";
-//		String testTechSkills = "test::techSkills";
-//
-//
-//
-//		User testUser = new User(testEmail, testPassword, testFirstName, testLastName, testTechSkills);
-//		users.save(testUser);
-//
-//		NetworkingJSONController jsonController  = new NetworkingJSONController();
-//
-//		jsonController.register(testUser);
-//
-//
-////		assertEquals(1, users.count());
-//		User retrievedUser = users.findOne(testUser.getId());
-//		assertNotNull(retrievedUser);
-//
-//		users.delete(testUser);
-////		assertEquals(0, users.count());
-//		retrievedUser = users.findOne(testUser.getId());
-//		assertNull(retrievedUser);
-//
-//	}
+
+	@Test
+	public void testRegisterUser() {
+		System.out.println("Testing inserting user into db");
+
+		String testEmail = "test::email";
+		String testPassword = "test::password";
+		String testFirstName = "test::firstName";
+		String testLastName = "test::lastName";
+		String testTechSkills = "test::techSkills";
+
+
+		User testUser = new User(testEmail, testPassword, testFirstName, testLastName);
+
+		JSONRestController jsonController = new JSONRestController();
+
+		jsonController.register(testUser);
+
+
+//		assertEquals(1, users.count());
+		User retrievedUser = users.findOne(testUser.getId());
+		assertNotNull(retrievedUser);
+
+		users.delete(testUser);
+//		assertEquals(0, users.count());
+		retrievedUser = users.findOne(testUser.getId());
+		assertNull(retrievedUser);
+
+	}
+}
 
 
 
