@@ -30,6 +30,10 @@ public class JSONRestController {
 
 
 
+    @RequestMapping(path = "/",method = RequestMethod.GET)
+    public void home(){
+        System.out.println("Pleaaaaaase");
+    }
 
     //From Austin: container holding String email and String password
     @RequestMapping(path = "/login.json", method = RequestMethod.POST)
