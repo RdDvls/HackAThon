@@ -15,7 +15,6 @@ public class JSONRestControllerTest {
 
     @Test
     public void register() throws Exception {
-
     }
 
 }
