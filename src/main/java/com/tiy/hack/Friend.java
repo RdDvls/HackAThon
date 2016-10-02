@@ -15,8 +15,8 @@ public class Friend{
     @ManyToOne
     User user;
 
-//    @ManyToOne
-//    User friend;
+    @ManyToOne
+    User friend;
 
     @Column(nullable = false)
     int friendId;

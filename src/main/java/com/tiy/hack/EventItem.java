@@ -12,6 +12,7 @@ public class EventItem {
     @Id
     @GeneratedValue
     int id;
+
     @ManyToOne
     User user;
 
@@ -37,19 +38,19 @@ public class EventItem {
 //    public boolean isDone() {
 //        return isDone;
 //    }
-
+//
 //    public void setDone(boolean done) {
 //        isDone = done;
 ////    }
 
-//    public EventItem(User user, String eventName, String description, String location) {
-//        this.user = user;
-//        this.eventName = eventName;
-//        this.description = description;
-//        this.location = location;
-////        this.time = time;
-////        this.isDone = isDone;
-//    }
+    public EventItem(User user, String eventName, String description, String location) {
+        this.user = user;
+        this.eventName = eventName;
+        this.description = description;
+        this.location = location;
+//        this.time = time;
+//        this.isDone = isDone;
+    }
     public void addToAttendees(User user) {
         //But I will need to resave whole event to db as well in json controller. (check)
         attendees.add(user);

@@ -36,26 +36,26 @@ public class HackAThonApplicationTests {
 	public void contextLoads() {
 
 	}
-	@Test
-	public void testCreateUser() throws Exception {
-		User tester = new User();
-
-		tester.email = "ImaDuck@gmail.com";
-		tester.firstName = "Louis";
-		tester.lastName = "Platyrhynchos";
-//		tester.techSkills = "Java MF'in Master";
-		tester.password = "quack";
-
-		users.save(tester);
-
-		int userID = tester.getId();
-
-		User retrievedUser = users.findByEmail("ImaDuck@gmail.com");
-
-		assertEquals(tester.id, retrievedUser.id);
-
-		users.delete(tester);
-	}
+//	@Test
+//	public void testCreateUser() throws Exception {
+//		User tester = new User();
+//
+//		tester.email = "ImaDuck@gmail.com";
+//		tester.firstName = "Louis";
+//		tester.lastName = "Platyrhynchos";
+////		tester.techSkills = "Java MF'in Master";
+//		tester.password = "quack";
+//
+//		users.save(tester);
+//
+//		int userID = tester.getId();
+//
+//		User retrievedUser = users.findByEmail("ImaDuck@gmail.com");
+//
+//		assertEquals(tester.id, retrievedUser.id);
+//
+//		users.delete(tester);
+//	}
 
 
 
@@ -82,46 +82,46 @@ public class HackAThonApplicationTests {
 
 	}
 
-	@Test
-	public void testConnectUser(){
-
-		System.out.println("Testing inserting user into db");
-
-		String testEmail = "friendTest::email";
-		String testPassword = "friendTest::password";
-		String testFirstName = "friendTest::firstName";
-		String testLastName = "friendTest::lastName";
-
-
-		User testUser = new User(testEmail, testPassword, testFirstName, testLastName);
-		users.save(testUser);
-
-		System.out.println("User added: " + testUser);
-
-		String friendTestEmail = "friend2Test::email";
-		String friendTestPassword = "friend2Test::password";
-		String friendTestFirstName = "friend2Test::firstName";
-		String friendTestLastName = "friend2Test::lastName";
-
-
-		User testFriend = new User(friendTestEmail, friendTestPassword, friendTestFirstName, friendTestLastName);
-		users.save(testFriend);
-
-		System.out.println("User added: " + testFriend);
-
-		friendConnectionContainer.setUserWhoWantsToBeFriendId(testFriend.getId());
-		friendConnectionContainer.setUserId(testUser.getId());
-
-		try {
-			testJSONController.requestContact(friendConnectionContainer);
-		} catch (Exception exception) {
-			exception.printStackTrace();
-		}
-
-		System.out.println("Connection established");
-
-		friends.findAllByUserID(testFriend.getId());
-		System.out.println("Friends for userID " + testFriend.getId() + ": " + friends.findAllByUserID(testFriend.getId()));
+//	@Test
+//	public void testConnectUser(){
+//
+//		System.out.println("Testing inserting user into db");
+//
+//		String testEmail = "friendTest::email";
+//		String testPassword = "friendTest::password";
+//		String testFirstName = "friendTest::firstName";
+//		String testLastName = "friendTest::lastName";
+//
+//
+//		User testUser = new User(testEmail, testPassword, testFirstName, testLastName);
+//		users.save(testUser);
+//
+//		System.out.println("User added: " + testUser);
+//
+//		String friendTestEmail = "friend2Test::email";
+//		String friendTestPassword = "friend2Test::password";
+//		String friendTestFirstName = "friend2Test::firstName";
+//		String friendTestLastName = "friend2Test::lastName";
+//
+//
+//		User testFriend = new User(friendTestEmail, friendTestPassword, friendTestFirstName, friendTestLastName);
+//		users.save(testFriend);
+//
+//		System.out.println("User added: " + testFriend);
+//
+//		friendConnectionContainer.setUserWhoWantsToBeFriendId(testFriend.getId());
+//		friendConnectionContainer.setUserId(testUser.getId());
+//
+//		try {
+//			testJSONController.requestContact(friendConnectionContainer);
+//		} catch (Exception exception) {
+//			exception.printStackTrace();
+//		}
+//
+//		System.out.println("Connection established");
+//
+//		friends.findAllByUserID(testFriend.getId());
+//		System.out.println("Friends for userID " + testFriend.getId() + ": " + friends.findAllByUserID(testFriend.getId()));
 
 //		assertTrue();
 
@@ -227,7 +227,7 @@ public class HackAThonApplicationTests {
 //	}
 
 
-}
+
 
 
 
