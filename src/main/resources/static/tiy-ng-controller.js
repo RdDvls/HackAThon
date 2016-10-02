@@ -1,5 +1,6 @@
 angular.module('HackAThon', [])
    .controller('HackAThonController', function($scope, $http, $timeout) {
+        console.log("Running...")
         $scope.register = function(email, firstName, lastName, password) {
             console.log("In register function in ng controller");
 
