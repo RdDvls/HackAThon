@@ -4,32 +4,42 @@ package com.tiy.hack;
  * Created by RdDvls on 10/2/16.
  */
 public class FriendConnectionContainer {
-    int userID;
-    int friendID;
+    int userId;
+    int userWhoWantsToBeFriendId;
+    int friendId;
 
-    public FriendConnectionContainer() {
+    public int getFriendId() {
+        return friendId;
     }
 
-    public FriendConnectionContainer(int userID, int friendId) {
-        this.userID = userID;
-        this.friendID = friendId;
+    public void setFriendId(int friendId) {
+        this.friendId = friendId;
+    }
+
+    public FriendConnectionContainer() {
+
+    }
+
+    public FriendConnectionContainer(int userId, int userWhoWantsToBeFriendId) {
+        this.userId = userId;
+        this.userWhoWantsToBeFriendId = userWhoWantsToBeFriendId;
     }
 
     //Getters and setters
-    public int getUserID() {
-        return userID;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getFriendID() {
-        return friendID;
+    public int getUserWhoWantsToBeFriendId() {
+        return userWhoWantsToBeFriendId;
     }
 
-    public void setFriendID(int friendID) {
-        this.friendID = friendID;
+    public void setUserWhoWantsToBeFriendId(int userWhoWantsToBeFriendId) {
+        this.userWhoWantsToBeFriendId = userWhoWantsToBeFriendId;
     }
 }
 

@@ -24,8 +24,6 @@ public class User {
     @Column(nullable = false)
     String lastName;
 
-//    @Column
-//    String techSkills;
 
 //    @ManyToOne
 //    UserEvent userEvent;

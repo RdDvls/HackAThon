@@ -18,7 +18,7 @@
 
 <body ng-controller="HackAThonController">
 
-<input type="button" ng-click="register(email, firstName, lastName, password, techSkills)" value="Send"/>
+<input type="button" ng-click="register(email, firstName, lastName, password)" value="Send"/>
     <input type="text" placeholder="First name" ng-model="firstName"/>
     <input type="text" placeholder="Last name" ng-model="lastName"/>
     <input type="text" placeholder="Email" ng-model="email"/>
@@ -41,8 +41,7 @@ Password: <input type="text" ng-model="loginPassword"/> <br/>
 Add an event:<br/>
 Event name: <input type="text" ng-model="newEventName"/> <br/>
 Location: <input type="text" ng-model="newEventLocation"/> <br/>
-Date: <input type="text" ng-model="newEventDate"/> <br/>
 Description: <input type="text" ng-model="newEventDescription"/> <br/>
-<input type="button" ng-click="addEvent(newEventName, newEventLocation, newEventDate, newEventDescription)" value="Create"/> <br/>
+<input type="button" ng-click="addEvent(newEventName, newEventLocation,newEventDescription)" value="Create"/> <br/>
 </body>
 </html>

@@ -9,9 +9,8 @@ angular.module('HackAThon', [])
                 firstName: firstName,
                 lastName: lastName,
                 password: password,
-                techSkills: techSkills
             }
-            console.log("Container we're about to send: " + newUser.email + " " + newUser.firstName + " " + newUser.lastName + " " + newUser.password + " " + newUser.techSkills);
+            console.log("Container we're about to send: " + newUser.email + " " + newUser.firstName + " " + newUser.lastName + " " + newUser.password);
 
             $http.post("/newUser.json", newUser)
                 .then(
@@ -46,15 +45,14 @@ angular.module('HackAThon', [])
                     });
         };
 
-        $scope.createNewEvent = function(newEventName, newEventLocation, newEventDate, newEventTime) {
+        $scope.createNewEvent = function(newEventName, newEventLocation, newEventDescription) {
              console.log("In createNewEvent function in ng controller");
 
              //Make a container
              var newEvent = {
                  name: newEventName,
                  location: newEventLocation,
-                 date: newEventDate,
-                 time: newEventTime
+                 description: newEventDescription,
              }
 
              $http.post("/addEvent.json", newEvent)

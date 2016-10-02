@@ -64,7 +64,7 @@ public class JSONRestController {
 
     }
 
-    //From Austin: container holding user info: String email, String password, String firstName, String lastName, String techSkills
+    //From Austin: container holding user info: String email, String password, String firstName, String lastName
     @RequestMapping(path = "/newUser.json", method = RequestMethod.POST)
     //Problem -> can't call @RequestBody on multiple things! Just a single java object.
     public LoginContainer register(@RequestBody User newUser) {
@@ -191,18 +191,18 @@ public class JSONRestController {
     @RequestMapping(path = "/requestContact.json", method = RequestMethod.POST)
     public ArrayList<Friend> requestContact(@RequestBody FriendConnectionContainer friendConnectionContainer) throws Exception {
         //Find USER in users based on userID -- just to make sure valid
-        User user = users.findOne(friendConnectionContainer.getUserID());
+        User user = users.findOne(friendConnectionContainer.getUserId());
 //        User user = friends.findOne(friendConnectionContainer.getUserId());
 
         //Find FRIEND in users based on userID -- just to make sure valid
-        User friend = users.findOne(friendConnectionContainer.getFriendID());
+        User friend = users.findOne(friendConnectionContainer.getFriendId());
         if (user == null) {
             throw new Exception("Requested user is not in database");
         } else if (friend == null) {
             throw new Exception("Requested friend is not in database");
         } else {
             //Make a new Friend object with userId from db and friendId from db
-            Friend myFriend = new Friend(user);
+            Friend myFriend = new Friend(user,friend.getId());
             //save to friends table
             friends.save(myFriend);
             //return the user's list of friends by querying table
@@ -225,16 +225,16 @@ public class JSONRestController {
     public LoginContainer viewUserInfo(@RequestBody FriendConnectionContainer friendConnectionContainer) {
         //go through friends table and find
         // current user is seeing if they are on friend list of friend
-        User requesterUser = users.findOne(friendConnectionContainer.userID);
-        User requesteeFriend = users.findOne(friendConnectionContainer.friendID);
+        User requesterUser = users.findOne(friendConnectionContainer.userId);
+        User requesteeFriend = users.findOne(friendConnectionContainer.friendId);
 
         LoginContainer myContainer = new LoginContainer();
         boolean noAccess = true;
 
-        Iterable<Friend> requesteesFriendList = friends.findAllByUserID(friendConnectionContainer.friendID);
+        Iterable<Friend> requesteesFriendList = friends.findAllByUserID(friendConnectionContainer.friendId);
         for (Friend friend : requesteesFriendList) {
-            if (friendConnectionContainer.userID == friend.getID()) {
-                myContainer.user = users.findOne(friendConnectionContainer.friendID);
+            if (friendConnectionContainer.userId == friend.getId()) {
+                myContainer.user = users.findOne(friendConnectionContainer.friendId);
                 myContainer.errorMessage = null;
                 noAccess = false;
             }
