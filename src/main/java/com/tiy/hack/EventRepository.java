@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface EventRepository extends CrudRepository <EventItem, Integer>{
     List<EventItem> findByUser(User user);
-    List<EventItem> findById(EventItem event);
+
+    List<EventItem> findById(EventItem eventItem);
 }

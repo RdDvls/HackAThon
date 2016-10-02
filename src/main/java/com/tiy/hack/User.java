@@ -8,10 +8,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users")
 public class User {
-
     @Id
     @GeneratedValue
     int id;
+
+    @Column(nullable = false, unique = true)
+    String email;
+
+    @Column(nullable = false)
+    String password;
 
     @Column(nullable = false)
     String firstName;
@@ -19,35 +24,45 @@ public class User {
     @Column(nullable = false)
     String lastName;
 
+//    @Column
+//    String techSkills;
 
+//    @ManyToOne
+//    UserEvent userEvent;
 
-    @Column(nullable = false,unique = true)
-    String email;
-
-    @Column(nullable = false)
-    String password;
-
-    public User(){
-
+    public User() {
     }
 
-    public User(String email, String firstName, String lastName, String password, String techSkills) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String email, String password, String firstName, String lastName) {
         this.email = email;
         this.password = password;
-//        this.techSkills = techSkills;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public User(String email, String firstName, String lastName, String password) {
+    public User(String email, String password) {
         this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.password = password;
+    }
+
+    //Getters and setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
-
         return password;
     }
 
@@ -63,30 +78,12 @@ public class User {
         this.firstName = firstName;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-//
-//
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
 

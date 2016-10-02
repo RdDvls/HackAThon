@@ -1,6 +1,7 @@
 package com.tiy.hack;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * Created by RdDvls on 9/30/16.
@@ -14,40 +15,44 @@ public class EventItem {
     @ManyToOne
     User user;
 
-    public EventItem(String eventName, String description, String location, boolean isDone) {
-        this.eventName = eventName;
-        this.description = description;
-        this.location = location;
-        this.isDone = isDone;
-    }
-
     @Column(nullable = false)
-
     String eventName;
+
     @Column(nullable = false)
     String description;
+
     @Column(nullable = false)
     String location;
-//    @Column(nullable = false)
-//    long time;
-    @Column(nullable = false)
-    boolean isDone;
 
-    public boolean isDone() {
-        return isDone;
-    }
+    @Column
+    ArrayList<User> attendees = new ArrayList<>();
 
-    public void setDone(boolean done) {
-        isDone = done;
-    }
 
-    public EventItem(User user, String eventName, String description, String location, boolean isDone) {
-        this.user = user;
+    public EventItem(String eventName, String description, String location) {
         this.eventName = eventName;
         this.description = description;
         this.location = location;
-//        this.time = time;
-        this.isDone = isDone;
+    }
+
+//    public boolean isDone() {
+//        return isDone;
+//    }
+
+//    public void setDone(boolean done) {
+//        isDone = done;
+////    }
+
+//    public EventItem(User user, String eventName, String description, String location) {
+//        this.user = user;
+//        this.eventName = eventName;
+//        this.description = description;
+//        this.location = location;
+////        this.time = time;
+////        this.isDone = isDone;
+//    }
+    public void addToAttendees(User user) {
+        //But I will need to resave whole event to db as well in json controller. (check)
+        attendees.add(user);
     }
 
     public int getId() {
@@ -93,6 +98,15 @@ public class EventItem {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public ArrayList<User> getAttendees() {
+        return attendees;
+    }
+
+    public void setAttendees(ArrayList<User> attendees) {
+        this.attendees = attendees;
+    }
+
 
 //    public long getTime() {
 //        return time;
