@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="HackAThon">
+
+<head>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/tiy-ng-controller.js"></script>
+</head>
 <!--
    {{! changing the mustache delimiter so it doesn't conflict with  }}
    {{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
    {{=<% %>=}}
 --->
-<head>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="../static/tiy-ng-controller.js"></script>
-
-    <script src="/tiy-ng-controller.js"></script>
-
-</head>
-/Users/RdDvls/Documents/sandbox/HackAThon/src/main/resources/static.js/tiy-ng-controller.js
-<div>
-    <br><br>
-</div>
+<br><br><br>
 <head>
    Blah
 </head>
 
 <body ng-controller="HackAThonController">
+
+<input type="button" ng-click="register(email, firstName, lastName, password)" value="Send"/>
     <input type="text" placeholder="First name" ng-model="firstName"/>
     <input type="text" placeholder="Last name" ng-model="lastName"/>
     <input type="text" placeholder="Email" ng-model="email"/>
     <input type="text" placeholder="Password" ng-model="password"/>
     <input type="button" value="Register" ng-click="register(firstName,lastName,email,password)"/>
+<br><br><br><br>
 
+<br/>
+{{loginContainer}}
+
+<br/><br/><br/><br/><br/>
+OR login to your existing account:<br/>
+Email: <input type="text" ng-model="loginEmail"/> <br/>
+Password: <input type="text" ng-model="loginPassword"/> <br/>
+<input type="button" ng-click="login(loginEmail, loginPassword)" value="Send"/>
+
+{{loginContainerForLogin}}
+
+<br/><br/><br/><br/><br/>
+Add an event:<br/>
+Event name: <input type="text" ng-model="newEventName"/> <br/>
+Location: <input type="text" ng-model="newEventLocation"/> <br/>
+Description: <input type="text" ng-model="newEventDescription"/> <br/>
+<input type="button" ng-click="addEvent(newEventName, newEventLocation,newEventDescription)" value="Create"/> <br/>
 </body>
 </html>

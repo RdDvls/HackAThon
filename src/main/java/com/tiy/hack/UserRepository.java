@@ -8,6 +8,7 @@ import java.util.List;
  * Created by RdDvls on 9/30/16.
  */
 public interface UserRepository extends CrudRepository<User, Integer>{
-    User findFirstByEmail (String email);
-
+    User findByEmail (String email);
+    User findFirstByEmailAndPassword (String email, String password);
+    User findByemailAndpassword(String email, String password);
 }

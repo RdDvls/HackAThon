@@ -15,7 +15,7 @@ public class AttendingEvents {
     int id;
 
     @ManyToOne
-    EventItem event;
+    EventItem eventItem;
 
     @ManyToOne
     User user;
@@ -28,12 +28,12 @@ public class AttendingEvents {
         this.id = id;
     }
 
-    public EventItem getEvent() {
-        return event;
+    public EventItem getEventItem() {
+        return eventItem;
     }
 
-    public void setEvent(EventItem event) {
-        this.event = event;
+    public void setEventItem(EventItem eventItem) {
+        this.eventItem = eventItem;
     }
 
     public User getUser() {
@@ -44,8 +44,8 @@ public class AttendingEvents {
         this.user = user;
     }
 
-    public AttendingEvents(EventItem event, User user) {
-        this.event = event;
+    public AttendingEvents(EventItem eventItem, User user) {
+        this.eventItem = eventItem;
         this.user = user;
     }
 
