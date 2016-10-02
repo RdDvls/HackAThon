@@ -29,10 +29,10 @@ public class EventItem {
     ArrayList<User> attendees = new ArrayList<>();
 
 
-    public EventItem(String eventName, String location, String description) {
+    public EventItem(String eventName, String description, String location) {
         this.eventName = eventName;
-        this.location = location;
         this.description = description;
+        this.location = location;
     }
 
 //    public boolean isDone() {
