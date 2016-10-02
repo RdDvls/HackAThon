@@ -6,11 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-
-
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
-import static junit.framework.TestCase.assertNull;
+import static junit.framework.TestCase.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -201,19 +197,24 @@ public class HackAThonApplicationTests {
 		String testDescription = "testDescription";
 
 		EventItem testEvent = new EventItem(testName,testDescription,testLocation);
+
+
+
 		events.save(testEvent);
+		assertNotNull(events.findAll());
+
 	}
 }
 
 
 
 // 	@Test
-//	public void deleteExtraTestDonaldsInUserEvents() {
+//	public void deleteExtraTestInUserEvents() {
 //		userEvents.deleteAll();
 //	}
 
 // 	@Test
-//	public void testInsertANewUserTestFriendForTestDonald() {
+//	public void testInsertANewUserTestFriendFor() {
 // 		User testUser = users.findOne(20);
 //		Friend testFriend = new Friend(testUser);
 //		friends.save(testFriend);
