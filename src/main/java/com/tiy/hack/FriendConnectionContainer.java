@@ -11,7 +11,7 @@ public class FriendConnectionContainer {
     public int getFriendId() {
         return friendId;
     }
-
+//
     public void setFriendId(int friendId) {
         this.friendId = friendId;
     }

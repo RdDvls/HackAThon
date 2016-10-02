@@ -18,6 +18,7 @@ public class UserEvent {
     @ManyToOne
     EventItem event;
 
+
     public UserEvent() {
     }
 
