@@ -108,7 +108,7 @@ public class JSONRestController {
     }
     public ArrayList<User> setListOfAttendees(EventItem event) {
         //I need to query the userevents for ones that have this eventid
-        Iterable<UserEvent> allUserEventsForThisEvent = userEvents.findAllByEventID(event.getId());
+        Iterable<UserEvent> allUserEventsForThisEvent = userEvents.findAllByEventId(event.getId());
         ArrayList<User> allAttendees = new ArrayList<>();
         for (UserEvent currentUserEvent : allUserEventsForThisEvent) {
             //get the user for currentUserEvent
@@ -138,8 +138,8 @@ public class JSONRestController {
 
 //    From Austin: Just int eventId
     @RequestMapping(path = "/getSingleEvent.json", method = RequestMethod.POST)
-    public EventItem singleEventView(@RequestBody int eventID) {
-        EventItem event = events.findOne(eventID);
+    public EventItem singleEventView(@RequestBody int eventid) {
+        EventItem event = events.findOne(eventid);
         System.out.println("Now returning event " + event.getEventName());
         return event;
     }
@@ -162,7 +162,7 @@ public class JSONRestController {
         //Instead, try finding all attendees by userEvents table
         ArrayList<User> thisEventsAttendees = new ArrayList<>();
         //If it doesn't work, might need to pass in the event instead of the event id.
-        Iterable<UserEvent> allUserEventsLinkedToThisEvent = userEvents.findAllByEventID(idContainer.getEventId());
+        Iterable<UserEvent> allUserEventsLinkedToThisEvent = userEvents.findAllByEventId(idContainer.getEventId());
         for (UserEvent currentUserEvent : allUserEventsLinkedToThisEvent) {
             thisEventsAttendees.add(currentUserEvent.getUser());
         }
@@ -206,7 +206,7 @@ public class JSONRestController {
             //save to friends table
             friends.save(myFriend);
             //return the user's list of friends by querying table
-            Iterable<Friend> allMyFriends = friends.findAllByUserID(user.getId());
+            Iterable<Friend> allMyFriends = friends.findAllByUserId(user.getId());
             ArrayList<Friend> listOfMyFriends = new ArrayList<>();
             for (Friend currentFriend : allMyFriends) {
                 listOfMyFriends.add(currentFriend);
@@ -231,7 +231,7 @@ public class JSONRestController {
         LoginContainer myContainer = new LoginContainer();
         boolean noAccess = true;
 
-        Iterable<Friend> requesteesFriendList = friends.findAllByUserID(friendConnectionContainer.friendId);
+        Iterable<Friend> requesteesFriendList = friends.findAllByUserId(friendConnectionContainer.friendId);
         for (Friend friend : requesteesFriendList) {
             if (friendConnectionContainer.userId == friend.getId()) {
                 myContainer.user = users.findOne(friendConnectionContainer.friendId);
