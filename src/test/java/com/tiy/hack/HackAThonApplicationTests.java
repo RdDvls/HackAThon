@@ -166,7 +166,7 @@ public class HackAThonApplicationTests {
 		assertNull(retrievedUser);
 
 	}
-}
+
 
 
 
@@ -192,19 +192,19 @@ public class HackAThonApplicationTests {
 //
 //	}
 
-//	@Test
-//	public void testEventInsert() {
-//		System.out.println("Putting a test event into db");
-//
-//		String testName = "testEvent";
-//		String testLocation = "testLocation";
-//		String testDate = "1/1/16";
-//		String testTime = "12:00";
-//		String testTechSkills = "testSkills";
-//
-//		Event testEvent = new Event(testName, testLocation, testDate, testTime);
-//		events.save(testEvent);
-//	}
+	@Test
+	public void testEventInsert() {
+		System.out.println("Putting a test event into db");
+
+		String testName = "testEvent";
+		String testLocation = "testLocation";
+		String testDescription = "testDescription";
+
+		EventItem testEvent = new EventItem(testName,testDescription,testLocation);
+		events.save(testEvent);
+	}
+}
+
 
 
 // 	@Test
