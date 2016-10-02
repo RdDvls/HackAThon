@@ -54,16 +54,16 @@ public class UserRepositoryTest {
 
     @Test
     public void testAddUser() throws Exception {
-        User userToAdd = new User("test@test.com", "Joe", "Fabiano", "abc123!", "techSkills");
-        System.out.println("User first name = " + userToAdd.getFirstName() + "\nUser Last name = " + userToAdd.getLastName() + "\nUser password = " + userToAdd.getPassword() + "\nUser email = " + userToAdd.getEmail() + "\nUser techSkills = " + userToAdd.getTechSkills());
+        User userToAdd = new User("test@test.com", "abc123!", "Joe", "Fabiano");
+        System.out.println("User first name = " + userToAdd.getFirstName() + "\nUser Last name = " + userToAdd.getLastName() + "\nUser password = " + userToAdd.getPassword() + "\nUser email = " + userToAdd.getEmail());
         users.save(userToAdd);
-        myUser = users.findFirstByEmail("test@test.com");
-        System.out.println("User first name = " + myUser.getFirstName() + "\nUser Last name = " + myUser.getLastName() + "\nUser password = " + myUser.getPassword() + "\nUser email = " + myUser.getEmail() + "\nUser techSkills = " + myUser.getTechSkills());
+        myUser = users.findByEmail("test@test.com");
+        System.out.println("User first name = " + myUser.getFirstName() + "\nUser Last name = " + myUser.getLastName() + "\nUser password = " + myUser.getPassword() + "\nUser email = " + myUser.getEmail());
         assertEquals("Joe", myUser.getFirstName());
         assertEquals("Fabiano", myUser.getLastName());
         assertEquals("test@test.com", myUser.getEmail());
         assertEquals("abc123!", myUser.getPassword());
-        assertEquals("techSkills", myUser.getTechSkills());
+        //assertEquals("techSkills", myUser.getTechSkills());
 
         users.delete(myUser);
     }
