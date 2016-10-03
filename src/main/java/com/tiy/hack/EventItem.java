@@ -25,7 +25,15 @@ public class EventItem {
     @Column(nullable = false)
     String location;
 
+    public EventItem(String eventName, String description, String location, ArrayList<User> attendees) {
+        this.eventName = eventName;
+        this.description = description;
+        this.location = location;
+        this.attendees = attendees;
+    }
+
     @Column
+
     ArrayList<User> attendees = new ArrayList<>();
 
 

@@ -30,9 +30,10 @@ public class JSONRestController {
 
 
 
-    @RequestMapping(path = "/",method = RequestMethod.GET)
-    public void home(){
-        System.out.println("Pleaaaaaase");
+    @RequestMapping(path = "/test.json", method = RequestMethod.GET)
+    public String testUser(){
+//        User testUser = new User();
+        return "home";
     }
 
     //From Austin: container holding String email and String password

@@ -76,6 +76,27 @@ public class HackAThonApplicationTests {
 		assertNull(retrievedUser);
 
 	}
+	@Test
+	public void testEventIntoDatabase() {
+		System.out.println("Testing inserting event into db");
+
+		String testName = "test::name";
+		String testLocation = "test::location";
+		String testDescriptioin = "test::description";
+
+		EventItem testEvent = new EventItem(testName, testLocation, testDescriptioin);
+		events.save(testEvent);
+
+//		assertEquals(1, users.count());
+		EventItem retrievedEvent = events.findOne(testEvent.getId());
+		assertNotNull(retrievedEvent);
+
+		events.delete(testEvent);
+//		assertEquals(0, users.count());
+		retrievedEvent = events.findOne(testEvent.getId());
+		assertNull(retrievedEvent);
+
+	}
 
 //	@Test
 //	public void testConnectUser(){

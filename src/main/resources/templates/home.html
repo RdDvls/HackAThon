@@ -19,11 +19,11 @@
 <body ng-controller="HackAThonController">
 
 <input type="button" ng-click="register(email, firstName, lastName, password)" value="Send"/>
-    <input type="text" placeholder="First name" ng-model="firstName"/>
-    <input type="text" placeholder="Last name" ng-model="lastName"/>
     <input type="text" placeholder="Email" ng-model="email"/>
-    <input type="text" placeholder="Password" ng-model="password"/>
-    <input type="button" value="Register" ng-click="register(firstName,lastName,email,password)"/>
+<input type="text" placeholder="Password" ng-model="password"/>
+<input type="text" placeholder="First name" ng-model="firstName"/>
+<input type="text" placeholder="Last name" ng-model="lastName"/>
+<input type="button" value="Register" ng-click="register(firstName,lastName,email,password)"/>
 <br><br><br><br>
 
 <br/>
@@ -39,9 +39,9 @@ Password: <input type="text" ng-model="loginPassword"/> <br/>
 
 <br/><br/><br/><br/><br/>
 Add an event:<br/>
-Event name: <input type="text" ng-model="newEventName"/> <br/>
-Location: <input type="text" ng-model="newEventLocation"/> <br/>
-Description: <input type="text" ng-model="newEventDescription"/> <br/>
+Event name: <input type="text" ng-model="name"/> <br/>
+Location: <input type="text" ng-model="location"/> <br/>
+Description: <input type="text" ng-model="description"/> <br/>
 <input type="button" ng-click="addEvent(newEventName, newEventLocation,newEventDescription)" value="Create"/> <br/>
 </body>
 </html>
