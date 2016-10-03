@@ -142,6 +142,7 @@ public class JSONRestController {
         for (EventItem currentEvent : allEvents) {
             setListOfAttendees(currentEvent);
             eventList.add(currentEvent);
+            System.out.println("Created event: " + currentEvent.getEventName() + " " + currentEvent.getDescription() + " " + currentEvent.getLocation());
         }
         return eventList;
     }
