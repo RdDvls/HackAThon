@@ -7,11 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;
+import static junit.framework.TestCase.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -93,7 +92,6 @@ public class HackAThonApplicationTests {
 //	}
 
 
-
 	@Test
 	public void testUserIntoDatabase() {
 		System.out.println("Testing inserting user into db");
@@ -157,11 +155,11 @@ public class HackAThonApplicationTests {
 //
 //		friends.findAllByUserID(testFriend.getId());
 //		System.out.println("Friends for userID " + testFriend.getId() + ": " + friends.findAllByUserID(testFriend.getId()));
-
+//
 //		assertTrue();
-
-
-
+//
+//
+//
 //		Delete User
 //		User retrievedUser = users.findOne(testUser.getId());
 //		users.delete(testUser);
@@ -172,38 +170,37 @@ public class HackAThonApplicationTests {
 //		users.delete(testFriend);
 //		retrievedFriend = users.findOne(testFriend.getId());
 //		assertNull(retrievedFriend);
+
+
+	@Test
+	public void testRegisterUser() {
+		System.out.println("Testing inserting user into db");
+
+		String testEmail = "test::email";
+		String testPassword = "test::password";
+		String testFirstName = "test::firstName";
+		String testLastName = "test::lastName";
+		String testTechSkills = "test::techSkills";
+
+
+		User testUser = new User(testEmail, testPassword, testFirstName, testLastName);
+
+		JSONRestController jsonController = new JSONRestController();
+
+		jsonController.register(testUser);
+
+
+//		assertEquals(1, users.count());
+		User retrievedUser = users.findOne(testUser.getId());
+		assertNotNull(retrievedUser);
+
+		users.delete(testUser);
+//		assertEquals(0, users.count());
+		retrievedUser = users.findOne(testUser.getId());
+		assertNull(retrievedUser);
+
 	}
 
-//	@Test
-//	public void testRegisterUser() {
-//		System.out.println("Testing inserting user into db");
-//
-//		String testEmail = "test::email";
-//		String testPassword = "test::password";
-//		String testFirstName = "test::firstName";
-//		String testLastName = "test::lastName";
-//		String testTechSkills = "test::techSkills";
-//
-//
-//
-//		User testUser = new User(testEmail, testPassword, testFirstName, testLastName, testTechSkills);
-//		users.save(testUser);
-//
-//		NetworkingJSONController jsonController  = new NetworkingJSONController();
-//
-//		jsonController.register(testUser);
-//
-//
-////		assertEquals(1, users.count());
-//		User retrievedUser = users.findOne(testUser.getId());
-//		assertNotNull(retrievedUser);
-//
-//		users.delete(testUser);
-////		assertEquals(0, users.count());
-//		retrievedUser = users.findOne(testUser.getId());
-//		assertNull(retrievedUser);
-//
-//	}
 
 
 
@@ -229,28 +226,33 @@ public class HackAThonApplicationTests {
 //
 //	}
 
-//	@Test
-//	public void testEventInsert() {
-//		System.out.println("Putting a test event into db");
-//
-//		String testName = "testEvent";
-//		String testLocation = "testLocation";
-//		String testDate = "1/1/16";
-//		String testTime = "12:00";
-//		String testTechSkills = "testSkills";
-//
-//		Event testEvent = new Event(testName, testLocation, testDate, testTime);
-//		events.save(testEvent);
-//	}
+	@Test
+	public void testEventInsert() {
+		System.out.println("Putting a test event into db");
+
+		String testName = "testEvent";
+		String testLocation = "testLocation";
+		String testDescription = "testDescription";
+
+		EventItem testEvent = new EventItem(testName,testDescription,testLocation);
+
+
+
+		events.save(testEvent);
+		assertNotNull(events.findAll());
+
+	}
+}
+
 
 
 // 	@Test
-//	public void deleteExtraTestDonaldsInUserEvents() {
+//	public void deleteExtraTestInUserEvents() {
 //		userEvents.deleteAll();
 //	}
 
 // 	@Test
-//	public void testInsertANewUserTestFriendForTestDonald() {
+//	public void testInsertANewUserTestFriendFor() {
 // 		User testUser = users.findOne(20);
 //		Friend testFriend = new Friend(testUser);
 //		friends.save(testFriend);
