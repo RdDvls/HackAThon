@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="HackAThon">
+
+<head>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <!--<script src="/tiy-ng-controller.js"></script>
+    <script src="../static/tiy-ng-controller.js"></script>-->
+    <script src="/tiy-ng-controller.js"></script>
+    <script src="../static/tiy-ng-controller.js"></script>
+</head>
+<!--
+   {{! changing the mustache delimiter so it doesn't conflict with  }}
+   {{! the default angularjs delimeters - https://mustache.github.io/mustache.5.html for more info  }}
+   {{=<% %>=}}
+--->
+<br><br><br>
+<head>
+    Test Page
+</head>
+
+<body ng-controller="HackAThonController">
+
+<input type="button" ng-click="register(email, firstName, lastName, password)" value="Send"/>
+<input type="text" placeholder="First name" ng-model="firstName"/>
+<input type="text" placeholder="Last name" ng-model="lastName"/>
+<input type="text" placeholder="Email" ng-model="email"/>
+<input type="text" placeholder="Password" ng-model="password"/>
+<input type="button" value="Register" ng-click="register(firstName,lastName,email,password)"/>
+<br><br><br><br>
+
+<br/>
+{{loginContainer}}
+
+<br/><br/><br/><br/><br/>
+OR login to your existing account:<br/>
+Email: <input type="text" ng-model="loginEmail"/> <br/>
+Password: <input type="text" ng-model="loginPassword"/> <br/>
+<input type="text" placeholder="First name" ng-model="loginFirstName"/>
+<input type="text" placeholder="Last name" ng-model="loginLastName"/>
+<input type="button" ng-click="testLogin()" value="testLogin"/>
+{{loginEmail}}
+{{loginPassword}}
+{{loginFirstName}}
+{{loginLastName}}
+{{loginContainerForLogin}}
+
+<br/><br/><br/><br/><br/>
+Add an event:<br/>
+Event name: <input type="text" ng-model="newEventName"/> <br/>
+Location: <input type="text" ng-model="newEventLocation"/> <br/>
+Description: <input type="text" ng-model="newEventDescription"/> <br/>
+<input type="button" ng-click="testAddEvent(newEventName, newEventLocation,newEventDescription)" value="testCreate"/> <br/>
+</body>
+</html>

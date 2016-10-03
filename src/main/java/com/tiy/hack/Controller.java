@@ -11,8 +11,17 @@ import javax.servlet.http.HttpSession;
  */
 @org.springframework.stereotype.Controller
 public class Controller {
+
     @RequestMapping(path="/home", method = RequestMethod.GET)
     public String home(Model model, HttpSession session){
         return "home";
     }
+    @RequestMapping(path="/test", method = RequestMethod.GET)
+    public String test(Model model, HttpSession session){
+        return "test";
+    }
+
+
+
+
 }

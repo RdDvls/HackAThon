@@ -112,8 +112,32 @@ angular.module('HackAThon', [])
                          console.log("Unable to get data...");
                      });
         };
+$scope.testLogin = function() {
+            console.log("In test login function in ng controller");
+
+            //Make a container
+                    $http.get("/testLogin.json?email=" + $scope.loginEmail + "&password=" + $scope.loginPassword + "&firstName=" + $scope.loginFirstName + "&lastName=" + $scope.loginLastName)
+                    .then(
+                        function success(response) {
+                            console.log(response.data);
+                            console.log("The testlogin button worked");
+
+                            $scope.result = {};
+
+                            alert("About to add solution on the scope");
+
+                            $scope.result = response.data;
 
 
+                        },
+                        function error(response) {
+                            console.log("unable to add info on the scope");
+                        });
+        };
+var email = $scope.loginEmail;
+var password = $scope.loginPassword;
+var firstName = $scope.loginFirstName;
+var lastName = $scope.loginLastName;
     console.log("Page loaded!");
 
     });

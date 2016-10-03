@@ -5,7 +5,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
 import static junit.framework.TestCase.*;
 
 @RunWith(SpringRunner.class)
@@ -32,6 +36,40 @@ public class HackAThonApplicationTests {
 	public void contextLoads() {
 
 	}
+//	@RequestMapping(path = "/testLogin.json", method = RequestMethod.GET)
+//	public LoginContainer addUserTest(String email, String password, String firstName, String lastName) throws Exception {
+//
+//		LoginContainer myLoginContainer = new LoginContainer();
+//
+//		User testUser = new User(email, password, firstName, lastName);
+//
+//		if (!testUser.getEmail().equals(email)) {
+//			System.out.println("Email entered in the url for the user: " + testUser.getEmail());
+//			System.out.println("Email in the created user: " + testUser.getEmail());
+//			System.out.println("Email entered in the url for the user: " + testUser.getEmail());
+//			myLoginContainer.setErrorMessage("The email did not get added to the new user.");
+//			throw new Exception("The email entered did not get added to the new user.");
+//		} else if (!testUser.getPassword().equals(password)) {
+//			System.out.println("Password entered in the url for the user: " + testUser.getPassword());
+//			System.out.println("Password in the created user: " + testUser.getPassword());
+//			myLoginContainer.setErrorMessage("The password entered did not get added to the new user.");
+//			throw new Exception("The password entered did not get added to the new user.");
+//		} else if (!testUser.getFirstName().equals(firstName)) {
+//			System.out.println("First name entered in the url for the user: " + testUser.getFirstName());
+//			System.out.println("First name in the created user: " + testUser.getFirstName());
+//			myLoginContainer.setErrorMessage("The first name entered did not get added to the new user.");
+//			throw new Exception("The first name entered did not get added to the new user.");
+//		} else if (!testUser.getFirstName().equals(lastName)) {
+//			System.out.println("Last name entered in the url for the user: " + testUser.getLastName());
+//			System.out.println("Last name in the created user: " + testUser.getLastName());
+//			myLoginContainer.setErrorMessage("The last name entered did not get added to the new user.");
+//			throw new Exception("The last name entered did not get added to the new user.");
+//		}
+//
+//		myLoginContainer.setUser(testUser);
+//
+//		return myLoginContainer;
+//	}
 //	@Test
 //	public void testCreateUser() throws Exception {
 //		User tester = new User();
