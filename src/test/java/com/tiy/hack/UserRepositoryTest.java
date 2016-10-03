@@ -40,6 +40,7 @@ public class UserRepositoryTest {
     EventRepository events;
     User myUser;
     User userToAdd;
+    EventItem myEvent;
     @Before
     public void setUp() throws Exception {
 //        User userToAdd = new User("Joe", "Fabiano", "test@test.com", "abc123!");
@@ -51,13 +52,13 @@ public class UserRepositoryTest {
     public void tearDown() throws Exception {
 
     }
-
+    //Add user test method which adds a user to DB, and then deletes the user
     @Test
     public void testAddUser() throws Exception {
         User userToAdd = new User("test@test.com", "abc123!", "Joe", "Fabiano");
         System.out.println("User first name = " + userToAdd.getFirstName() + "\nUser Last name = " + userToAdd.getLastName() + "\nUser password = " + userToAdd.getPassword() + "\nUser email = " + userToAdd.getEmail());
         users.save(userToAdd);
-        myUser = users.findByEmail("test@test.com");
+        User myUser = users.findByEmail("test@test.com");
         System.out.println("User first name = " + myUser.getFirstName() + "\nUser Last name = " + myUser.getLastName() + "\nUser password = " + myUser.getPassword() + "\nUser email = " + myUser.getEmail());
         assertEquals("Joe", myUser.getFirstName());
         assertEquals("Fabiano", myUser.getLastName());
@@ -65,7 +66,71 @@ public class UserRepositoryTest {
         assertEquals("abc123!", myUser.getPassword());
         //assertEquals("techSkills", myUser.getTechSkills());
 
+        testDeleteUser(myUser);
+    }
+    //Add user test method for other test methods to call which returns the user object
+    @Test
+    public User testReturnAddUser() throws Exception {
+        User userToAdd = new User("test@test.com", "abc123!", "Joe", "Fabiano");
+        System.out.println("User first name = " + userToAdd.getFirstName() + "\nUser Last name = " + userToAdd.getLastName() + "\nUser password = " + userToAdd.getPassword() + "\nUser email = " + userToAdd.getEmail());
+        users.save(userToAdd);
+        User myUser = users.findByEmail("test@test.com");
+        System.out.println("User first name = " + myUser.getFirstName() + "\nUser Last name = " + myUser.getLastName() + "\nUser password = " + myUser.getPassword() + "\nUser email = " + myUser.getEmail());
+        assertEquals("Joe", myUser.getFirstName());
+        assertEquals("Fabiano", myUser.getLastName());
+        assertEquals("test@test.com", myUser.getEmail());
+        assertEquals("abc123!", myUser.getPassword());
+        //assertEquals("techSkills", myUser.getTechSkills());
+
+        return myUser;
+    }
+    //A test login method which adds a user to DB, and then searches the DB by Email for the entered user. It then creates a login container,
+    //and tests that the user has the expected attributes. The ID value is tested to ensure it is not null. The user is then deleted.
+    @Test
+    public void testLogin() throws Exception {
+        User userToAdd = new User("test@test.com", "abc123!", "Joe", "Fabiano");
+        System.out.println("User first name = " + userToAdd.getFirstName() + "\nUser Last name = " + userToAdd.getLastName() + "\nUser password = " + userToAdd.getPassword() + "\nUser email = " + userToAdd.getEmail());
+        users.save(userToAdd);
+        User myUser = users.findByEmail("test@test.com");
+        System.out.println("User first name = " + myUser.getFirstName() + "\nUser Last name = " + myUser.getLastName() + "\nUser password = " + myUser.getPassword() + "\nUser email = " + myUser.getEmail());
+//        assertEquals("Joe", myUser.getFirstName());
+//        assertEquals("Fabiano", myUser.getLastName());
+//        assertEquals("test@test.com", myUser.getEmail());
+//        assertEquals("abc123!", myUser.getPassword());
+        //assertEquals("techSkills", myUser.getTechSkills());
+        LoginContainer myLoginContainer = new LoginContainer();
+                myLoginContainer.setErrorMessage("Test Error Message");
+                myLoginContainer.setUser(myUser);
+        assertEquals("Joe", myUser.getFirstName());
+        assertEquals("Fabiano", myUser.getLastName());
+        assertEquals("test@test.com", myUser.getEmail());
+        assertEquals("abc123!", myUser.getPassword());
+        assertNotNull(myUser.getId());
+        System.out.println("user ID = " + myUser.getId());
+        testDeleteUser(myUser);
+    }
+    //This addEvent method test looks like it needs to be changed as the find event by ID is searching based on the eventItem when it should be searching based on the id
+    @Test
+    public void testAddEvent() throws Exception {
+        User myUser = testReturnAddUser();
+        users.save(myUser);
+        EventItem eventToAdd = new EventItem(myUser, "test event name", "test event description", "test event location");
+        events.save(eventToAdd);
+        //EventItem eventFromDB = events.findById(eventToAdd);//This needs to be changed to return a eventItem to test this properly
+//        assertNotNull(eventFromDB);
+//        assertEquals("test event name", eventFromDB.getEventName());
+//        assertEquals("test event description", eventFromDB.getDescription());
+//        assertEquals("test event location", eventFromDB.getLocation());
+        testDeleteEvent(eventToAdd);
+        testDeleteUser(myUser);
+    }
+    @Test
+    public void testDeleteUser(User myUser) throws Exception {
         users.delete(myUser);
+    }
+    @Test
+    public void testDeleteEvent(EventItem myEvent) throws Exception {
+        events.delete(myEvent);
     }
 //    @RequestMapping(path = "/newUser.json", method = RequestMethod.GET)
 ////    public User register(HttpSession session,String email, String firstName, String lastName, String password) {

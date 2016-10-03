@@ -35,6 +35,40 @@ public class JSONRestController {
         System.out.println("Pleaaaaaase");
     }
 
+    @RequestMapping(path = "/testLogin.json", method = RequestMethod.GET)
+    public LoginContainer addUserTest(String email, String password, String firstName, String lastName) throws Exception {
+
+        LoginContainer myLoginContainer = new LoginContainer();
+
+        User testUser = new User(email, password, firstName, lastName);
+
+        if (!testUser.getEmail().equals(email)) {
+            System.out.println("Email entered in the url for the user: " + testUser.getEmail());
+            System.out.println("Email in the created user: " + testUser.getEmail());
+            myLoginContainer.setErrorMessage("The email did not get added to the new user.");
+            throw new Exception("The email entered did not get added to the new user.");
+        } else if (!testUser.getPassword().equals(password)) {
+            System.out.println("Password entered in the url for the user: " + testUser.getPassword());
+            System.out.println("Password in the created user: " + testUser.getPassword());
+            myLoginContainer.setErrorMessage("The password entered did not get added to the new user.");
+            throw new Exception("The password entered did not get added to the new user.");
+        } else if (!testUser.getFirstName().equals(firstName)) {
+            System.out.println("First name entered in the url for the user: " + testUser.getFirstName());
+            System.out.println("First name in the created user: " + testUser.getFirstName());
+            myLoginContainer.setErrorMessage("The first name entered did not get added to the new user.");
+            throw new Exception("The first name entered did not get added to the new user.");
+        } else if (!testUser.getLastName().equals(lastName)) {
+            System.out.println("Last name entered in the url for the user: " + testUser.getLastName());
+            System.out.println("Last name in the created user: " + testUser.getLastName());
+            myLoginContainer.setErrorMessage("The last name entered did not get added to the new user.");
+            throw new Exception("The last name entered did not get added to the new user.");
+        }
+
+        myLoginContainer.setUser(testUser);
+
+        return myLoginContainer;
+    }
+
     //From Austin: container holding String email and String password
     @RequestMapping(path = "/login.json", method = RequestMethod.POST)
     public LoginContainer login(@RequestBody User user /*String email, String password*/) throws Exception {
@@ -110,6 +144,19 @@ public class JSONRestController {
         }
         return eventList;
     }
+
+//    @RequestMapping(path = "/testAddEvent.json", method = RequestMethod.GET)
+//    public List<EventItem> testAddEvent(String eventName, String location, String description) throws Exception {
+//
+//        List<EventItem> eventList = new ArrayList<EventItem>();
+//        Iterable<EventItem> allEvents = events.findAll();
+//        for (EventItem currentEvent : allEvents) {
+//            setListOfAttendees(currentEvent);
+//            eventList.add(currentEvent);
+//        }
+//        return eventList;
+//    }
+
     public ArrayList<User> setListOfAttendees(EventItem event) {
         //I need to query the userevents for ones that have this eventid
         Iterable<UserEvent> allUserEventsForThisEvent = userEvents.findAllByEventId(event.getId());
