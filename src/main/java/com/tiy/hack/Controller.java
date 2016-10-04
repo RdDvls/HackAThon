@@ -19,9 +19,6 @@ public class Controller {
     @RequestMapping(path="/test", method = RequestMethod.GET)
     public String test(Model model, HttpSession session){
         return "test";
-    }
-
-
 
 
 }
